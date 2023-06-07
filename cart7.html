@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Shopping Cart</title>
+  <link rel="stylesheet" href="./style.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #FEF7FF;
+      height: 100vh;
+     
+    }
+
+    .cart-container {
+      width: 50%;
+      padding: 20px;
+      border-right: 2px solid #ccc;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      /* background-color: brown; */
+    }
+
+    .button-price-container {
+    width: 40%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+    align-items: flex-start;
+    justify-content: flex-start; /* Adjusted alignment */
+    margin-top: 80px; /* Adjusted margin */
+    margin-left: 20px; /* Adjusted margin */
+    }
+    .order-button{
+    background-color: #6e208a;
+    color: #fef7ff;
+    height: 40px;
+    width: 250px; /* Adjusted width */
+    border-radius: 5px;
+    margin-top: 20px; /* Adjusted margin */
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    .order-button:hover {
+    color:#360847;
+    background: #F7D1FF;
+    }
+    .button-price{ 
+        
+    border: 2px solid #ccc;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    #total-price {
+    margin-bottom: 8px;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    }
+    #cart{
+      margin-top: 40px; /* Added margin-top */
+      margin-left: 55px;
+    }
+
+    h2 {
+      margin-top: 30px;
+      margin-left: 40px;
+      font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    }
+
+    .product {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .product-image {
+    width: 150px;
+    height: 100px;
+    background-size: contain; /* Ensures the full image is displayed */
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid #e3e2e2;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: white;
+    }
+
+    .product-details {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 500px;
+      height: 100px;
+      border: 2px solid #e3e2e2;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    .product-name {
+      font-weight: bold;
+      margin-bottom: 50px;
+      margin-right: 10px;
+      margin-left: 5px;
+    }
+
+    .product-price {
+      margin-top: 60px;
+      margin-left: 10px;
+    }
+
+    .quantity {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+      margin-top: auto;
+      margin-bottom: 10px;
+    }
+
+    .quantity input {
+      width: 30px;
+      text-align: center;
+    }
+
+    .trash-icon {
+      color: black;
+      cursor: pointer;
+      font-size: 30px;
+      font-weight: 600px;
+    }
+    .trash-icon:hover{
+        color:#b357b3;
+
+    }
+
+    .decrement {
+      font-weight: bold;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .increment {
+      font-weight: bold;
+      font-size: 12px;
+      cursor: pointer;
+    }
+
+    .quantity-value {
+      font-weight: bold;
+      font-size: 16px;
+      margin: 0 8px;
+    }
+    .p{
+        margin-top:5px;
+        margin-bottom: 20px;
+        font-weight: bold;
+        font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif
+    }
+    .image-product{
+        width: 150px;
+        height: 100px;
+    }
+
+  </style>
+</head>
+<body>
+  
+  <div class="top">
+  <div class="cart-container">
+    <h2>CART</h2>
+    <!-- Product 1 -->
+    <div id="cart">
+    <div class="product">
+      <div class="product-image">
+        <img src="product1.jpg" alt="Product 1" class="image-product">
+      </div>
+      <div class="product-details">
+        <div class="product-name">Product 1</div>
+        <div class="quantity">
+          <div class="decrement">-</div>
+          <span class="quantity-value">1</span>
+          <div class="increment">+</div>
+        </div>
+        <div class="product-price">$10</div>
+        <div class="trash-icon">&#128465;</div>
+      </div>
+    </div>
+
+    <!-- Product 2 -->
+    <div class="product">
+      <div class="product-image">
+        <img src="product2.jpg" alt="Product 2" class="image-product">
+      </div>
+      <div class="product-details">
+        <div class="product-name">Product 2</div>
+        <div class="quantity">
+          <div class="decrement">-</div>
+          <span class="quantity-value">1</span>
+          <div class="increment">+</div>
+        </div>
+        <div class="product-price">$15</div>
+        <div class="trash-icon">&#128465;</div>
+      </div>
+    </div>
+
+    <!-- Add more products here... -->
+  </div>
+  </div>
+  <div class="button-price-container">
+    <div class="button-price">
+       <p class="p">IN ALL</p>
+       <div id="total-price">Total Price: $</div>
+       <div id="product-count">Product Count: 0</div>
+       <button class="order-button" >To Order</button>
+    </div>
+  </div></div>
+  <div class="fin">
+  <div class="bar">
+    <div class="bar_c">
+      <p>
+        aptopStore
+  <br>
+        CONTACTS <br>
+        +36 20 255 36 69 <br>
+        laptopst@gmailcom <br> <br> <br> 
+        
+        SOCIAL MEDIA
+      </p>
+    </div>
+    <div class="bar_c">
+      <p>
+        Contacts <br>
+  Installment <br>
+  Delivery <br>
+  Payment <br>
+  Warranty <br>
+  Returns
+      </p>
+    </div>
+    <div class="bar_c">
+      <p>
+        LAPTOPS BY USE <br>
+  All laptop <br>
+  Everyday <br>
+  Gaming <br>
+  Business <br>
+  Graphic Design <br>
+  Student
+      </p>
+    </div>
+    <div class="bar_c">
+      <p>
+        POPULAR BRANDS <br>
+  All laptop <br>
+  HP <br>
+  Dell <br>
+  Asus <br>
+  Lenovo <br>
+  Acer <br>
+  Samsung <br>
+  Apple
+      </p>
+    </div>
+    <div class="bar_c">
+      <p>
+        
+        DESKTOPS <br>
+  All Desktops <br>
+  Business Desktops <br>
+  Gaming Desktops <br>
+  All_in_Ones <br>
+  Towers & Mini's <br>
+  Workstations
+      </p>
+    </div>
+    <div class="bar_c">
+      <p>
+        MONITORS <br>
+  All Monitors <br>
+  Business Monitors <br>
+  Gaming Monitors <br>
+  More than 27° <br>
+  Hight resolution <br>
+  Curved
+      </p>
+    </div>
+    
+    <div class="bar_c">
+      <p>
+        ACCESORIES <br>
+  All accessories <br>
+  Mice <br>
+  Keyboards <br>
+  Pens&Webcams <br>
+  Docking & Hubs <br>
+  Power Adapters <br>
+  Bags & Cases <br>
+  Audio & VR Headsets <br>
+  Microphones <br>
+  Gaming Accessories <br>
+  PC Components
+      </p>
+    </div>
+  
+    <div class="bar_c">
+      <p>
+        SALES <br>
+  Weekly PC Deals <br>
+  Desktop Deals <br>
+  Accessories & Electronics <br>
+  Laptop Deals
+      </p>
+    </div>
+  </div>
+  <div class="last"></div>
+</div>
+
+  <script>
+    // Get all the increment and decrement buttons
+    const incrementButtons = document.querySelectorAll('.increment');
+    const decrementButtons = document.querySelectorAll('.decrement');
+
+    // Add click event listener to each increment button
+    incrementButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const quantityContainer = button.parentNode; // Get the parent container
+        const quantityValue = quantityContainer.querySelector('.quantity-value'); // Get the quantity value element
+        let value = parseInt(quantityValue.textContent); // Parse the current value as an integer
+        value++; // Increment the value
+        quantityValue.textContent = value; // Update the quantity value
+        updateTotalPrice();
+        updateProductCount();
+      });
+    });
+
+    // Add click event listener to each decrement button
+    decrementButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const quantityContainer = button.parentNode; // Get the parent container
+        const quantityValue = quantityContainer.querySelector('.quantity-value'); // Get the quantity value element
+        let value = parseInt(quantityValue.textContent); // Parse the current value as an integer
+        if (value > 1) { // Ensure the value is greater than 1
+          value--; // Decrement the value
+          quantityValue.textContent = value; // Update the quantity value
+          updateTotalPrice();
+          updateProductCount();
+        }
+      });
+    });
+
+    // Get all the trash icons
+    const trashIcons = document.querySelectorAll('.trash-icon');
+
+    // Add click event listener to each trash icon
+    trashIcons.forEach(icon => {
+      icon.addEventListener('click', () => {
+        // Find the parent product element and remove it
+        const product = icon.closest('.product');
+        product.remove();
+        updateTotalPrice();
+        updateProductCount();
+      });
+    });
+
+    // Function to update the total price
+    function updateTotalPrice() {
+      const products = document.querySelectorAll('.product');
+      let totalPrice = 0;
+
+      products.forEach(product => {
+        const quantityValue = product.querySelector('.quantity-value');
+        const productPrice = product.querySelector('.product-price');
+
+        const quantity = parseInt(quantityValue.textContent);
+        const price = parseInt(productPrice.textContent.replace('$', ''));
+
+        totalPrice += quantity * price;
+      });
+
+      const totalPriceElement = document.getElementById('total-price');
+      totalPriceElement.textContent = 'Total Price:'+' ' + totalPrice +' DA';
+    }
+
+// Function to update the product count
+function updateProductCount() {
+  const products = document.querySelectorAll('.product');
+  let productCount = 0;
+
+  products.forEach(product => {
+    const quantityValue = product.querySelector('.quantity-value');
+    const quantity = parseInt(quantityValue.textContent);
+    productCount += quantity;
+  });
+
+  const productCountElement = document.getElementById('product-count');
+  productCountElement.textContent = 'Product Count: ' + productCount;
+}
+
+  
+   // } // Load the cart items on page load
+    window.addEventListener('load', function() {
+      loadCartItems();
+    });
+
+    // Function to load the cart items from local storage and render them
+    function loadCartItems() {
+  const cartItems = localStorage.getItem('cartItems');
+
+  if (cartItems) {
+    const parsedCartItems = JSON.parse(cartItems);
+
+    const cartContainer = document.getElementById('cart');
+    cartContainer.innerHTML = '';
+
+    parsedCartItems.forEach(function(item) {
+      const productElement = document.createElement('div');
+      productElement.classList.add('product');
+
+      const productImage = document.createElement('div');
+      productImage.classList.add('product-image');
+      productImage.style.backgroundImage = `url(${item.image})`;
+
+      const productDetails = document.createElement('div');
+      productDetails.classList.add('product-details');
+
+      const productName = document.createElement('div');
+      productName.classList.add('product-name');
+      productName.textContent = item.name;
+
+      const quantity = document.createElement('div');
+      quantity.classList.add('quantity');
+
+      const decrementButton = document.createElement('div');
+      decrementButton.classList.add('decrement');
+      decrementButton.textContent = '-';
+      decrementButton.addEventListener('click', function() {
+        updateQuantity(item, -1);
+      });
+
+      const quantityValue = document.createElement('span');
+      quantityValue.classList.add('quantity-value');
+      quantityValue.textContent = item.quantity >= 1 ? item.quantity : 1; // Set initial quantity value
+
+      const incrementButton = document.createElement('div');
+      incrementButton.classList.add('increment');
+      incrementButton.textContent = '+';
+      incrementButton.addEventListener('click', function() {
+        updateQuantity(item, 1);
+      });
+
+      quantity.appendChild(decrementButton);
+      quantity.appendChild(quantityValue); // Include quantity value element
+      quantity.appendChild(incrementButton);
+
+      const productPrice = document.createElement('div');
+      productPrice.classList.add('product-price');
+      productPrice.textContent = item.price + ' ' + 'DA' ;
+
+      const trashIcon = document.createElement('div');
+      trashIcon.classList.add('trash-icon');
+      trashIcon.innerHTML = '&#128465;';
+      trashIcon.addEventListener('click', function() {
+        removeCartItem(item);
+      });
+
+      productDetails.appendChild(productName);
+      productDetails.appendChild(quantity);
+      productDetails.appendChild(productPrice);
+      productDetails.appendChild(trashIcon);
+
+      productElement.appendChild(productImage);
+      productElement.appendChild(productDetails);
+      cartContainer.appendChild(productElement);
+
+      updateTotalPrice();
+      updateProductCount();
+    });
+  }
+}
+
+
+      // Function to update the quantity of a cart item
+      function updateQuantity(item, change) {
+  const cartItems = localStorage.getItem('cartItems');
+
+  if (cartItems) {
+    const parsedCartItems = JSON.parse(cartItems);
+
+    const updatedCartItems = parsedCartItems.map(function(cartItem) {
+      if (cartItem.name === item.name) {
+        const newQuantity = cartItem.quantity + change;
+        cartItem.quantity = newQuantity >= 1 ? newQuantity : 1; // Ensure quantity is not decremented below 1
+      }
+      return cartItem;
+    });
+
+    localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+    loadCartItems();
+  }
+}
+
+
+    // Function to remove a cart item
+    function removeCartItem(item) {
+      const cartItems = localStorage.getItem('cartItems');
+
+      if (cartItems) {
+        const parsedCartItems = JSON.parse(cartItems);
+
+        const updatedCartItems = parsedCartItems.filter(function(cartItem) {
+          return cartItem.name !== item.name;
+        });
+
+        localStorage.setItem('cartItems', JSON.stringify(updatedCartItems));
+        loadCartItems();
+      }
+    }
+
+
+
+  </script>
+</body>
+</html>

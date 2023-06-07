@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<script>
+function addToCart(productName, productPrice, productImage) {
+    // Retrieve the cart items from local storage
+    const cartItems = localStorage.getItem('cartItems');
+    
+    if (cartItems) {
+      // If cart items exist, parse and update the array
+      const parsedCartItems = JSON.parse(cartItems);
+      parsedCartItems.push({ name: productName, price: productPrice, image: productImage });
+      localStorage.setItem('cartItems', JSON.stringify(parsedCartItems));
+    } else {
+      // If no cart items exist, create a new array with the product
+      const newCartItems = [{ name: productName, price: productPrice, image: productImage }];
+      localStorage.setItem('cartItems', JSON.stringify(newCartItems));
+    }
+    
+    // Alert the user that the product has been added to the cart (You can replace this with your own UI feedback)
+    alert('Product added to cart!');
+  
+    // Redirect to the cart page
+    window.location.href = 'cart7.html';
+  }
+</script>
+</html>
